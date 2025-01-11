@@ -6,7 +6,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const navigateToCourses = () => {
-        navigate('/')
+        navigate('/courses')
 
     }
     return (

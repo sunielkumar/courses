@@ -6,7 +6,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path="courses" element={<Courses/>} />
+      <Route path="/courses" element={<Courses/>} />
        
     </Routes>
     </BrowserRouter>
