@@ -1,30 +1,30 @@
 import React from "react";
-import { Card, Row, Col, Typography } from "antd";
+import { Card, Row, Col } from "antd";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import Icon1 from '../assets/images/react.png';
 import Icon2 from '../assets/images/icon2.png';
 import Icon3 from '../assets/images/vue.png';
 import Icon4 from '../assets/images/icon4.png';
-import  '../assets/styles/card.css';
-
+import '../assets/styles/card.css';
 
 const Cards = ({ card, isActive, onClick }) => {
 
-  const activeCardStyles = {
-    scale: 1.3,
-    width: "400px",
-    backgroundColor: "#C33241",
-    color: "white",
-    height: '350px'
-  };
-
-  const inactiveCardStyles = {
-    scale: 1,
-    width: "240px",
-    backgroundColor: "#F9EBEC",
-    color: "#C33241",
-    heigh: '350px'
+  const cardStyles = {
+    active: {
+      scale: 1.3,
+      width: "400px",
+      backgroundColor: "#C33241",
+      color: "white",
+      height: '350px',
+    },
+    inactive: {
+      scale: 1,
+      width: "240px",
+      backgroundColor: "#F9EBEC",
+      color: "#C33241",
+      height: '350px',
+    },
   };
 
   return (
@@ -33,24 +33,17 @@ const Cards = ({ card, isActive, onClick }) => {
         borderRadius: 32,
         cursor: "pointer",
         overflow: "hidden",
-
       }}
-      // animate={isActive ? activeCardStyles : inactiveCardStyles}
       onClick={() => onClick(card.id)}
     >
       <Card
         style={{
-          width: isActive ? activeCardStyles?.width : inactiveCardStyles?.width,
-          height: isActive ? activeCardStyles?.height : inactiveCardStyles?.heigh,
-          backgroundColor: isActive
-            ? activeCardStyles?.backgroundColor
-            : inactiveCardStyles?.backgroundColor,
-          color: isActive ? activeCardStyles?.color : inactiveCardStyles?.color,
-
-          // position: "relative",
+          width: isActive ? cardStyles.active.width : cardStyles.inactive.width,
+          height: isActive ? cardStyles.active.height : cardStyles.inactive.height,
+          backgroundColor: isActive ? cardStyles.active.backgroundColor : cardStyles.inactive.backgroundColor,
+          color: isActive ? cardStyles.active.color : cardStyles.inactive.color,
         }}
         hoverable
-
       >
         {isActive ? (
           <>
@@ -66,21 +59,18 @@ const Cards = ({ card, isActive, onClick }) => {
                 color: "white",
               }}
             >
-
               View all Courses <FaArrowRight />
-
             </div>
-            
+
             <Row gutter={[16, 16]} justify="space-between" style={{ marginTop: 48 }}>
-              <Col><img src={Icon1} alt="React Icon" width={75} /> </Col>
+              <Col><img src={Icon1} alt="React Icon" width={75} /></Col>
               <Col><img src={Icon2} alt="Vue Icon" width={75} /></Col>
               <Col><img src={Icon3} alt="JS Icon" width={75} /></Col>
               <Col><img src={Icon4} alt="Angular Icon" width={75} /></Col>
             </Row>
 
-
-            <Row gutter={[16, 16]} justify="space-between" style={{ padding: '0px 25px' }}  >
-              <Col className="card-number" >
+            <Row gutter={[16, 16]} justify="space-between" style={{ padding: '0px 25px' }}>
+              <Col className="card-number">
                 {card?.number}
                 <sup className="sup">+</sup>
               </Col>
@@ -91,14 +81,9 @@ const Cards = ({ card, isActive, onClick }) => {
                 </div>
               </Col>
             </Row>
-
-
-
           </>
         ) : (
-          // Inactive Card Content
           <>
-
             <div
               style={{
                 display: "flex",
@@ -111,11 +96,9 @@ const Cards = ({ card, isActive, onClick }) => {
                 style={{
                   transform: "rotate(-90deg)",
                   display: "inline-block",
-
                   fontSize: 18,
                   margin: 0,
-                  fontWeight: 'bold'
-
+                  fontWeight: 'bold',
                 }}
               >
                 {card?.title}
@@ -132,8 +115,8 @@ const Cards = ({ card, isActive, onClick }) => {
               </p>
             </div>
 
-            <div className="card-number" style={{textAlign:'center'}}>
-              {card?.number} 
+            <div className="card-number" style={{ textAlign: 'center' }}>
+              {card?.number}
               <sup style={{ fontWeight: 900, fontSize: 30 }}>+</sup>
             </div>
           </>
